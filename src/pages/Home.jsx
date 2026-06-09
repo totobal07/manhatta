@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
-import { products } from '../data/products';
 import { CartContext } from '../context/CartContext';
 
 export default function Home() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [search, setSearch] = useState('');
-    const { addToCart } = useContext(CartContext);
+    
+    // Consumir el inventario reactivo global
+    const { products, addToCart } = useContext(CartContext);
     
     const slides = [
         { img: '/images/Gemini_Generated_Image_ymvx1symvx1symvx.png', text: 'Nuevas siluetas Y2K' },
@@ -22,7 +23,13 @@ export default function Home() {
         setCurrentSlide(prev => (prev + dir + slides.length) % slides.length);
     };
 
+    // Barra de búsqueda en base a lo escrito por teclado
     const filteredProducts = products.filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
+
+    // Filtrado por secciones lógicas
+    const poleras = filteredProducts.filter(p => p.category === 'poleras');
+    const pantalones = filteredProducts.filter(p => p.category === 'pantalones');
+    const zapatillas = filteredProducts.filter(p => p.category === 'zapatillas');
 
     return (
         <main id="main">
@@ -53,20 +60,45 @@ export default function Home() {
             </section>
 
             <section id="catalog">
-                <h2 className="text-bg">Catálogo</h2>
-                <div className="catalog">
-                    {filteredProducts.map(prod => (
-                        <ProductCard key={prod.id} product={prod} addToCart={addToCart} />
-                    ))}
-                </div>
+                <h2 className="text-bg">Nuestro Catálogo</h2>
+
+                {poleras.length > 0 && (
+                    <div className="category" id="cat-poleras">
+                        <h3 className="text-bg">Poleras y Hoodies</h3>
+                        <div className="catalog">
+                            {poleras.map(prod => <ProductCard key={prod.id} product={prod} addToCart={addToCart} />)}
+                        </div>
+                    </div>
+                )}
+
+                {pantalones.length > 0 && (
+                    <div className="category" id="cat-pantalones">
+                        <h3 className="text-bg">Pantalones</h3>
+                        <div className="catalog">
+                            {pantalones.map(prod => <ProductCard key={prod.id} product={prod} addToCart={addToCart} />)}
+                        </div>
+                    </div>
+                )}
+
+                {zapatillas.length > 0 && (
+                    <div className="category" id="cat-zapatillas">
+                        <h3 className="text-bg">Zapatillas</h3>
+                        <div className="catalog">
+                            {zapatillas.map(prod => <ProductCard key={prod.id} product={prod} addToCart={addToCart} />)}
+                        </div>
+                    </div>
+                )}
+                
+                {filteredProducts.length === 0 && (
+                    <p className="text-bg" style={{ textAlign: 'center', marginTop: '20px' }}>No se encontraron productos coincidentes.</p>
+                )}
             </section>
         </main>
     );
 }
 
-// Subcomponente encapsulado
 function ProductCard({ product, addToCart }) {
-    const [size, setSize] = useState(product.sizes[0]);
+    const [size, setSize] = useState(product.sizes[0] || 'Única');
     const [qty, setQty] = useState(1);
 
     return (
@@ -85,7 +117,7 @@ function ProductCard({ product, addToCart }) {
                     <li className="price">Precio: ${product.price.toLocaleString('es-CL')}</li>
                 </ul>
                 <div className="product-buy">
-                    <input type="number" className="qty-input" min="1" value={qty} onChange={(e) => setQty(Number(e.target.value))} />
+                    <input type="number" className="qty-input" min="1" value={qty} onChange={(e) => setQty(Math.max(1, Number(e.target.value)))} />
                     <button onClick={() => addToCart(product, qty, size)}>Comprar</button>
                 </div>
             </div>

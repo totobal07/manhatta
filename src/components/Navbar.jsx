@@ -20,6 +20,8 @@ export default function Navbar() {
                     <Link to="/auth">Cuenta</Link>
                     <span className="nav-sep">|</span>
                     <Link to="/contacto">Contacto</Link>
+                    <span className="nav-sep">|</span>
+                    <Link to="/admin" style={{ color: 'var(--btn-start)' }}> Admin</Link>
                 </div>
             </nav>
 
