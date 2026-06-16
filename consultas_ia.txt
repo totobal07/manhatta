@@ -1,11 +1,13 @@
 a) Estructuración e identificación de componentes en React
 
-Prompt 1: "hola, tengo este proyecto estático en html y js y necesito pasarlo a react con vite para un trabajo. ¿me dices paso a paso como separar los componentes como el carrusel y el catalogo? ademas el profe dice que no podemos usar document.getElementById, ¿cómo hago para que funcione el cambio de imágenes con useState en vez de manipular el DOM?"
+Prompt 1: "hola, tengo este proyecto estático en html y js y necesito pasarlo a react con vite para un trabajo. ¿me dices paso a paso como separar los componentes como el carrusel y el catalogo? además el profe dice que no podemos usar document.getElementById, ¿cómo hago para que funcione el cambio de imágenes con useState en vez de manipular el DOM?"
 
 Prompt 2: "ahora tengo que hacer un panel de administrador separado para crear o borrar productos (un CRUD). ¿cómo lo hago para que lo que yo agregue ahí aparezca al tiro en la página de inicio sin tener que usar funciones sueltas que modifiquen el DOM directamente?"
 
+Prompt 3: "al codigo le falta el Triple A y un boton de accesibilidad me lo podrias crear"
+
 b) Implementación de prácticas de seguridad en las validaciones de los formularios
 
-Prompt 3: "tengo que pasar mis 3 formularios (registro, login y contacto) a componentes de React. la pauta me pide que las validaciones sean seguras y prevengan cosas como inyección de código (XSS) usando el estado de react. ¿cómo aplico buenas prácticas de desarrollo seguro a los inputs y labels?"
+Prompt 4: "tengo que pasar mis 3 formularios (registro, login y contacto) a componentes de React. la pauta me pide que las validaciones sean seguras y prevengan cosas como inyección de código (XSS) usando el estado de react. ¿cómo aplico buenas prácticas de desarrollo seguro a los inputs y labels?"
 
-Prompt 4: "necesito proteger la ruta del CRUD. ¿cómo le pongo un login a la vista del administrador para que nadie más entre y mantenga la sesión guardada de forma segura?"
+Prompt 5: "necesito proteger la ruta del CRUD. ¿cómo le pongo un login a la vista del administrador para que nadie más entre y mantenga la sesión guardada de forma segura?"ra?"
