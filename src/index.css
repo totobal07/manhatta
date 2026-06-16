@@ -570,3 +570,54 @@ a { color: var(--primary); text-decoration: none; font-weight: bold; }
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* ==========================================
+   MODO ALTO CONTRASTE (NIVEL AAA)
+   ========================================== */
+body.high-contrast {
+    /* Forzar fondo negro puro y quitar imagen */
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    
+    /* Cambiar variables de color global */
+    --bg: #000000;
+    --panel-bg: #000000;
+    --cart-bg: #000000;
+    --primary: #ffff00; /* Amarillo puro (clásico AAA) */
+    --primary-contrast: #000000;
+}
+
+/* Forzar bordes y quitar sombras para que no haya degradados difíciles de leer */
+body.high-contrast * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+    border-color: #ffffff !important;
+}
+
+/* Textos clave en amarillo */
+body.high-contrast a,
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast .price,
+body.high-contrast .cart-item-price,
+body.high-contrast .subtitle {
+    color: #ffff00 !important;
+}
+
+/* Botones en alto contraste */
+body.high-contrast button {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    font-weight: bold !important;
+}
+
+/* Inputs en alto contraste */
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffff00 !important;
+}
